@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+
 class User(db.Model):
     __tablename__ = "users"
 
@@ -26,3 +27,11 @@ class Article(db.Model):
     title = db.Column(db.String, nullable=False)
     content = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    release_date = db.Column(db.DateTime, nullable=True, default=None)
+
+    @property
+    def release_date_str(self, format_string='%Y-%m-%d %H:%M:%S'):
+        if self.release_date:
+            return self.release_date.strftime(format_string)
+        else:
+            return 'Not set.'

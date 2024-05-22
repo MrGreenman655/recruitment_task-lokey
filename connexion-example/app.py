@@ -1,3 +1,5 @@
+from flask_cors import CORS
+
 from lib.config import CONFIG
 
 
@@ -14,7 +16,7 @@ def build_app():
 
     # activate config
     flask_app.config.from_object(CONFIG)
-
+    CORS(flask_app)
     db.init_app(flask_app)
 
     if debug_mode:

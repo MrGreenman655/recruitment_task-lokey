@@ -1,10 +1,10 @@
 import os
-from datetime import timedelta
 from typing import NamedTuple
 
 
+
 def default_db_file(suffix):
-    return f'sqlite:///local_dbs/db_{suffix}.db'
+    return f'sqlite:///db_{suffix}.db'
 
 
 class AppConfig(NamedTuple):

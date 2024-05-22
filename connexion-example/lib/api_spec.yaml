@@ -42,6 +42,13 @@ paths:
     get:
       summary: Get all user articles
       operationId: lib.views.view_articles.get
+      parameters:
+        - name: release_date__year
+          in: query
+          description: Filter articles by release date
+          schema:
+            type: string
+            format: date
       security:
         - jwt: [ ]
       responses:
@@ -122,6 +129,8 @@ components:
         title:
           type: string
         content:
+          type: string
+        release_date:
           type: string
       required:
         - article_id
