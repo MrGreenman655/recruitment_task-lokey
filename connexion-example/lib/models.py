@@ -30,7 +30,7 @@ class Article(db.Model):
     release_date = db.Column(db.DateTime, nullable=True, default=None)
 
     @property
-    def release_date_str(self, format_string='%Y-%m-%d %H:%M:%S'):
+    def release_date_str(self, format_string='%Y-%m-%d %H:%M:%S') -> str:
         if self.release_date:
             return self.release_date.strftime(format_string)
         else:

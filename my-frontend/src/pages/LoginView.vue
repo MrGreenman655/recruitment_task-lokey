@@ -5,9 +5,16 @@
         <div class="wrapper">
           <q-card class="card q-pa-xl">
             <q-form @submit="loginSubmit" class="q-gutter-md">
-              <q-input v-model="user.username" label="Username" :rules="[val => !!val || 'Field is required']"></q-input>
-              <q-input v-model="user.password" type="password" label="Password" :rules="[val => !!val || 'Field is required']"></q-input>
-              <q-btn type="submit">Sign Up</q-btn>
+              <q-card-section>
+                <q-input v-model="user.username" label="Username"
+                         :rules="[val => !!val || 'Field is required']"></q-input>
+                <q-input v-model="user.password" type="password" label="Password"
+                         :rules="[val => !!val || 'Field is required']"></q-input>
+              </q-card-section>
+              <q-card-actions align="right">
+                <q-btn color="primary" type="submit">Sign In</q-btn>
+              </q-card-actions>
+
             </q-form>
           </q-card>
         </div>
@@ -28,8 +35,8 @@ const user: IUserLogin = reactive({
   username: '',
   password: ''
 })
-const loginSubmit = async () =>{
-  await authStore.login(user.username,user.password)
+const loginSubmit = async () => {
+  await authStore.login(user.username, user.password)
 }
 </script>
 
@@ -38,6 +45,7 @@ const loginSubmit = async () =>{
   width: 400px;
   max-width: 400px;
 }
+
 .wrapper {
   width: 100vw;
   height: 100vh;
